@@ -25,37 +25,37 @@ const MenCategoryScreen = () => {
       id: "1",
       image: require("../../assets/Main-Cover.jpg"),
       name: "Product 1",
-      price: "29.99",
+      price: "2999",
     },
     {
       id: "2",
       image: require("../../assets/Main-Cover.jpg"),
       name: "Product 2",
-      price: "39.99",
+      price: "3999",
     },
     {
       id: "3",
       image: require("../../assets/Main-Cover.jpg"),
       name: "Product 3",
-      price: "49.99",
+      price: "4999",
     },
     {
       id: "4",
       image: require("../../assets/Main-Cover.jpg"),
       name: "Product 4",
-      price: "59.99",
+      price: "5999",
     },
     {
       id: "5",
       image: require("../../assets/Main-Cover.jpg"),
       name: "Product 5",
-      price: "69.99",
+      price: "6999",
     },
     {
       id: "6",
       image: require("../../assets/Main-Cover.jpg"),
       name: "Product 6",
-      price: "79.99",
+      price: "7999",
     },
   ];
 
@@ -64,25 +64,25 @@ const MenCategoryScreen = () => {
       id: "1",
       image: require("../../assets/Main-Cover.jpg"),
       name: "Product 1",
-      price: "29.99",
+      price: "2999",
     },
     {
       id: "2",
       image: require("../../assets/Main-Cover.jpg"),
       name: "Product 2",
-      price: "39.99",
+      price: "3999",
     },
     {
       id: "3",
       image: require("../../assets/Main-Cover.jpg"),
       name: "Product 3",
-      price: "49.99",
+      price: "4999",
     },
     {
       id: "4",
       image: require("../../assets/Main-Cover.jpg"),
       name: "Product 4",
-      price: "59.99",
+      price: "5999",
     },
   ];
 

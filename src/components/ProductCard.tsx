@@ -17,7 +17,7 @@ const ProductCard = ({ image, name, price, onPress }) => {
         <View style={tw`mt-2 ml-2`}>
           <Text style={tw`text-sm font-semibold text-black`}>{name}</Text>
           <Text>
-            <Text style={tw`text-sm text-gray-600`}>$</Text>
+            <Text style={tw`text-sm text-gray-600`}>Rs </Text>
             <Text style={tw`text-sm text-gray-600 font-bold`}>{price}</Text>
           </Text>
         </View>

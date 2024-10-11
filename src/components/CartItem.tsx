@@ -18,26 +18,26 @@ const CartItem = ({ title, image, price, brand, qty, id }) => {
 
   return (
     <View
-      style={tw`flex-row p-4 bg-white rounded-xl items-center my-3 mx-4 shadow-lg `}
+      style={tw`flex-row p-3 bg-white rounded-xl items-center my-1 mx-1 shadow-lg `}
     >
       {/* Image */}
       <Image source={{ uri: image }} style={tw`w-15 h-18 rounded-lg`} />
 
       {/* Text Content */}
-      <View style={tw`flex-1 px-3`}>
+      <View style={tw`flex-1 px-3  mt-3`}>
         <View style={tw`flex-row justify-between`}>
           <Text style={tw`text-sm font-semibold`}>{title}</Text>
 
-          <TouchableOpacity style={tw`pl-3`}>
+          <TouchableOpacity style={tw`pl-48`}>
             <Icon name="delete" size={20} color="gray-500" />
           </TouchableOpacity>
         </View>
-        <Text style={tw`text-sm text-gray-500`}>{brand}</Text>
+        <Text style={{ fontSize: 14, color: "#6b7280" }}>{brand}</Text>
 
         <View style={tw`flex-row justify-between`}>
-          <Text style={tw`text-lg font-bold mt-1`}>Rs {price}</Text>
+          <Text style={tw`text-sm font-bold mt-1`}>Rs {price}</Text>
 
-          <View style={tw`flex-row items-center bg-gray-200 rounded-xl`}>
+          <View style={tw`flex-row items-center bg-gray-200 rounded-xl ml-35`}>
             <TouchableOpacity
               onPress={decrementQuantity}
               style={tw`bg-gray-200 rounded-xl p-1`}

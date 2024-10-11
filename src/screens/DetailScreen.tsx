@@ -25,7 +25,7 @@ const DetailScreen = ({ navigation, route }) => {
       title: "Product 1",
       brand: "Brand A",
       description: "This is a description for Product 1.",
-      price: "29.99",
+      price: "2999",
     },
     {
       id: "2",
@@ -33,7 +33,7 @@ const DetailScreen = ({ navigation, route }) => {
       title: "Product 2",
       brand: "Brand B",
       description: "This is a description for Product 2.",
-      price: "39.99",
+      price: "3999",
     },
     {
       id: "3",
@@ -41,7 +41,7 @@ const DetailScreen = ({ navigation, route }) => {
       title: "Product 3",
       brand: "Brand C",
       description: "This is a description for Product 3.",
-      price: "49.99",
+      price: "4999",
     },
     {
       id: "4",
@@ -49,7 +49,7 @@ const DetailScreen = ({ navigation, route }) => {
       title: "Product 4",
       brand: "Brand D",
       description: "This is a description for Product 4.",
-      price: "59.99",
+      price: "5999",
     },
     {
       id: "5",
@@ -57,7 +57,7 @@ const DetailScreen = ({ navigation, route }) => {
       title: "Product 5",
       brand: "Brand E",
       description: "This is a description for Product 5.",
-      price: "69.99",
+      price: "6999",
     },
     {
       id: "6",
@@ -65,7 +65,7 @@ const DetailScreen = ({ navigation, route }) => {
       title: "Product 6",
       brand: "Brand F",
       description: "This is a description for Product 6.",
-      price: "79.99",
+      price: "7999",
     },
   ];
 
@@ -163,7 +163,9 @@ const DetailScreen = ({ navigation, route }) => {
             <View style={tw` w-full px-1`}>
               <View style={tw`flex-row justify-between items-center mt-8`}>
                 <View>
-                  <Text style={tw`text-gray-500 text-sm`}>Total Price</Text>
+                  <Text style={tw`text-black text-sm font-semibold`}>
+                    Total Price
+                  </Text>
                   <Text style={tw`font-bold text-sm`}>
                     RS{" "}
                     {product?.price
@@ -171,7 +173,8 @@ const DetailScreen = ({ navigation, route }) => {
                       : "N/A"}
                   </Text>
                 </View>
-                <View style={tw`flex-row justify-between items-center mr-14`}>
+
+                <View style={tw`flex-row justify-between items-center mr-18`}>
                   <View style={tw`flex-1`} />
                   <Pressable
                     // Implement Add to Cart logic here
