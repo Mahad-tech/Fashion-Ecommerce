@@ -17,8 +17,7 @@ import ProductContext from "../features/context/productContext";
 import AuthenticationModal from "../components/AuthenticationModal";
 import { useNavigation } from "@react-navigation/native";
 import CategoryCard from "../components/CategoryCard";
-import Searchbar from "../components/Searchbar";
-import UserLogo from "../../assets/user.png";
+import MEN from "../../assets/MEN.png";
 const HomeScreen = () => {
   const navigation = useNavigation();
   const { products, setProducts } = useContext(ProductContext);
@@ -62,20 +61,7 @@ const HomeScreen = () => {
           >
             <Text style={[tw`font-bold text-2xl`]}>UNIQUE</Text>
           </View>
-
-          {/* Optionally: Login Button on the right side */}
-
-          <Pressable
-            onPress={() => setModalVisible(!modalVisible)}
-            style={tw`flex-row justify-center items-center border border-slate-400 rounded-full`}
-          >
-            <Image source={UserLogo} style={tw`h-12 w-12`} />
-            <Text style={tw`font-semibold py-2 pr-4 pl-2`}>Login</Text>
-          </Pressable>
         </View>
-
-        {/* Search Bar */}
-        <Searchbar />
 
         {/* Offer Card */}
         <View style={tw`mt-6 p-5`}>
@@ -91,19 +77,19 @@ const HomeScreen = () => {
           <View style={tw`mt-5 ml-5 mr-5 mb-5`}>
             {/* Men Category */}
             <CategoryCard
-              title="Men"
+              imageSource={MEN}
               onPress={() => navigation.navigate("Men")}
             />
 
             {/* Women Category */}
             <CategoryCard
-              title="Women"
+              imageSource={MEN}
               onPress={() => navigation.navigate("Women")}
             />
 
             {/* Kids Category */}
             <CategoryCard
-              title="Junior"
+              imageSource={MEN}
               onPress={() => navigation.navigate("Juniors")}
             />
           </View>

@@ -10,10 +10,7 @@ const OrderItem = ({ orderId, title, image, brand, date, price, qty }) => {
     >
       <View style={tw`flex-row justify-center items-center`}>
         <View style={tw`p-2 items-center justify-center`}>
-          <Image
-            source={{ uri: image }}
-            style={tw`rounded-xl h-24 w-24 object-contain`}
-          />
+          <Image source={{ uri: image }} style={tw`rounded-xl h-24 w-24 `} />
         </View>
         <View
           style={tw`flex-1 flex-row  justify-between items-center w-[100%] pl-2`}

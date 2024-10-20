@@ -1,29 +1,14 @@
 import {
-  Pressable,
-  SafeAreaView,
-  StyleSheet,
   Text,
   View,
-  Image,
-  ToastAndroid,
+  TextInput,
+  TouchableOpacity,
+  ScrollView,
 } from "react-native";
-import React, { useContext, useEffect } from "react";
+import React, { useEffect } from "react";
 import tw from "twrnc";
-import User from "../../assets/user.png";
-import AuthContext from "../features/context/authContext";
-import { logout } from "../features/firebase/userAuth";
 
 const ProfileScreen = ({ navigation }) => {
-  const { currentUser, isLoggedIn, setIsLoggedIn } = useContext(AuthContext);
-
-  const handleLogout = async () => {
-    const res = await logout();
-    if (res.success === true) {
-      ToastAndroid.show("Logged Out Successfully", ToastAndroid.BOTTOM);
-      setIsLoggedIn(false);
-    }
-  };
-
   useEffect(() => {
     navigation.setOptions({
       headerTitle: "Profile",
@@ -31,45 +16,97 @@ const ProfileScreen = ({ navigation }) => {
   }, [navigation]);
 
   return (
-    <SafeAreaView style={tw`bg-white h-full p-6 justify-between`}>
-      <View>
-        <View style={tw`mt-16 justify-center items-center`}>
-          <View style={tw`border border-slate-200 rounded-lg`}>
-            <Image source={User} style={tw`h-32 w-32 `} />
-          </View>
-        </View>
-        <View style={tw`mt-6`}>
-          {isLoggedIn ? (
-            <View style={tw`items-center justify-center`}>
-              <Text style={tw`text-lg font-bold`}>
-                {currentUser?.name || "John Doe"}
-              </Text>
-              <Text style={tw`text-xs font-bold text-gray-500`}>
-                {currentUser?.email || "johndoe@email.com"}
-              </Text>
-            </View>
-          ) : (
-            <View style={tw`items-center justify-center`}>
-              <Text style={tw`text-lg font-bold`}>
-                Login To See Your Profile
-              </Text>
-            </View>
-          )}
+    <ScrollView style={tw`flex-1 bg-gray-100 p-6 `}>
+      <View style={tw`justify-center`}>
+        <Text style={tw`text-black text-center text-xl mb-6`}>
+          LOG IN TO YOUR ACCOUNT
+        </Text>
+
+        <TextInput
+          style={tw`border-b border-gray-600 rounded p-3 text-black mb-4`}
+          placeholder="Email"
+          placeholderTextColor="#7f7f7f"
+        />
+
+        <TextInput
+          style={tw`border-b border-gray-600 rounded-lg p-3 text-black mb-4`}
+          placeholder="Password"
+          placeholderTextColor="#7f7f7f"
+          secureTextEntry
+        />
+
+        <TouchableOpacity style={tw`bg-black rounded-lg p-2 mb-4`}>
+          {/* Set padding to 4 */}
+          <Text style={tw`text-white text-center text-lg`}>Login</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity>
+          <Text style={tw`text-gray-400 text-center mb-6`}>
+            Have you forgotten your password?
+          </Text>
+        </TouchableOpacity>
+
+        {/* Register section */}
+        <View style={tw`mt-10`}>
+          <Text style={tw`text-black text-center text-lg mb-4`}>
+            NEED AN ACCOUNT?
+          </Text>
+          <TouchableOpacity style={tw`bg-black rounded-lg p-2`}>
+            {/* Set padding to 4 */}
+            <Text style={tw`text-white text-center text-lg`}>Register</Text>
+          </TouchableOpacity>
         </View>
       </View>
-
-      {isLoggedIn && (
-        <View style={tw`justify-center items-center`}>
-          <Pressable
-            style={tw`bg-black w-full py-4 rounded-lg`}
-            onPress={handleLogout}
-          >
-            <Text style={tw`font-bold text-white text-center`}>Log Out</Text>
-          </Pressable>
-        </View>
-      )}
-    </SafeAreaView>
+    </ScrollView>
   );
 };
 
 export default ProfileScreen;
+
+// import React from "react";
+// import { View, Text, TextInput, TouchableOpacity } from "react-native";
+// import tw from "twrnc";
+
+// const LoginScreen = () => {
+//   return (
+//     <View style={tw`flex-1 bg-black p-6 justify-center`}>
+//       <Text style={tw`text-white text-2xl font-bold mb-6`}>
+//         LOG IN TO YOUR ACCOUNT
+//       </Text>
+
+//       <TextInput
+//         style={tw`border border-gray-600 rounded-lg p-4 text-white mb-4`}
+//         placeholder="Email"
+//         placeholderTextColor="#7f7f7f"
+//       />
+
+//       <TextInput
+//         style={tw`border border-gray-600 rounded-lg p-4 text-white mb-4`}
+//         placeholder="Password"
+//         placeholderTextColor="#7f7f7f"
+//         secureTextEntry
+//       />
+
+//       <TouchableOpacity style={tw`bg-white rounded-lg p-4 mb-4`}>
+//         <Text style={tw`text-black text-center font-bold text-lg`}>LOG IN</Text>
+//       </TouchableOpacity>
+
+//       <TouchableOpacity>
+//         <Text style={tw`text-gray-400 text-center mb-6`}>
+//           Have you forgotten your password?
+//         </Text>
+//       </TouchableOpacity>
+
+//       <View style={tw`mt-10 items-center`}>
+//         <Text style={tw`text-white text-lg mb-4`}>NEED AN ACCOUNT?</Text>
+//         <TouchableOpacity style={tw`bg-white rounded-lg p-4`}>
+//           <Text style={tw`text-black text-center font-bold text-lg`}>
+//             REGISTER
+//           </Text>
+//         </TouchableOpacity>
+//       </View>
+//     </View>
+//   );
+// };
+
+// export default LoginScreen;

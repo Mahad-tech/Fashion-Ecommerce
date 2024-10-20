@@ -1,7 +1,16 @@
-import { View, Text, Pressable, ScrollView } from "react-native";
-import React, { useState, useRef } from "react";
+import { View, Text, Pressable, Dimensions } from "react-native";
+import React, { useState, useRef, useEffect } from "react";
 import tw from "twrnc";
 import RBSheet from "react-native-raw-bottom-sheet";
+import Animated, {
+  useSharedValue,
+  useAnimatedStyle,
+  withRepeat,
+  withTiming,
+  Easing,
+  cancelAnimation,
+} from "react-native-reanimated";
+import { ScrollView } from "react-native-gesture-handler";
 
 const ScreensCategories = () => {
   const refRBSheet = useRef();
@@ -25,6 +34,60 @@ const ScreensCategories = () => {
     "Sherwani",
   ];
 
+  const categoryWidth = 120; // Approximate width of each category item
+  const translateX = useSharedValue(0);
+
+  // Start automatic scrolling
+  const startAutoScroll = () => {
+    const totalWidth = categoryWidth * categories.length;
+
+    translateX.value = withRepeat(
+      withTiming(-totalWidth, {
+        duration: totalWidth * 20, // Adjust speed by changing the duration
+        easing: Easing.linear,
+      }),
+      -1, // Infinite loop
+      false // No reverse animation
+    );
+  };
+
+  // Stop automatic scrolling
+  const stopAutoScroll = () => {
+    cancelAnimation(translateX); // Stop the current animation
+  };
+
+  useEffect(() => {
+    startAutoScroll(); // Start the scrolling on mount
+
+    return () => stopAutoScroll(); // Clean up animation on unmount
+  }, [categories.length, translateX]);
+
+  const animatedStyle = useAnimatedStyle(() => {
+    return {
+      transform: [{ translateX: translateX.value }],
+    };
+  });
+
+  const renderCategory = (category, index) => (
+    <Pressable
+      key={index}
+      onPress={() => setSelectedCategory(category)}
+      style={tw`mr-2 px-7 py-2 rounded-4 border ${
+        selectedCategory === category
+          ? "bg-black border-black"
+          : "bg-white border-gray-300"
+      }`}
+    >
+      <Text
+        style={tw`text-sm ${
+          selectedCategory === category ? "text-white" : "text-black"
+        }`}
+      >
+        {category}
+      </Text>
+    </Pressable>
+  );
+
   return (
     <View style={tw`my-1`}>
       {/* Header with "Categories" and "View all" */}
@@ -34,6 +97,8 @@ const ScreensCategories = () => {
           <Text style={tw`text-sm mt-1 text-black`}>View all</Text>
         </Pressable>
       </View>
+
+      {/* Bottom Sheet */}
       <RBSheet
         ref={refRBSheet}
         useNativeDriver={false}
@@ -72,32 +137,26 @@ const ScreensCategories = () => {
         </ScrollView>
       </RBSheet>
 
-      {/* Scrollable Categories */}
-      <ScrollView
-        horizontal={true}
-        showsHorizontalScrollIndicator={false}
-        contentContainerStyle={tw`px-4`}
-      >
-        {categories.map((category, index) => (
-          <Pressable
-            key={index}
-            onPress={() => setSelectedCategory(category)}
-            style={tw`mr-2 px-7 py-2 rounded-4 border ${
-              selectedCategory === category
-                ? "bg-black border-black"
-                : "bg-white border-gray-300"
-            }`}
-          >
-            <Text
-              style={tw`text-sm ${
-                selectedCategory === category ? "text-white" : "text-black"
-              }`}
-            >
-              {category}
-            </Text>
-          </Pressable>
-        ))}
-      </ScrollView>
+      {/* Scrollable Categories with Continuous and Manual Scroll */}
+      <View style={tw`overflow-hidden`}>
+        <Animated.ScrollView
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          onScrollBeginDrag={() => stopAutoScroll()}
+          onScrollEndDrag={() => startAutoScroll()} // Resume auto scroll after user interaction ends
+          contentContainerStyle={tw`flex-row`}
+        >
+          <Animated.View style={[tw`flex-row`, animatedStyle]}>
+            {categories.map((category, index) =>
+              renderCategory(category, index)
+            )}
+            {categories.map((category, index) =>
+              renderCategory(category, index)
+            )}
+            {/* Duplicate to create an infinite scroll effect */}
+          </Animated.View>
+        </Animated.ScrollView>
+      </View>
     </View>
   );
 };

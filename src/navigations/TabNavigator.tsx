@@ -4,11 +4,15 @@ import {
   CartStackNavigator,
   OrderStackNavigator,
   ProfileStackNavigator,
+  SearchStackNavigator,
+  MenuStackNavigator,
 } from "./StackNavigator";
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
+import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import { MainDrawerNavigator } from "./DrawerNavigator";
 import { useNavigation } from "@react-navigation/native";
 import { Pressable } from "react-native";
+import { Text } from "react-native";
 
 const Tab = createBottomTabNavigator();
 
@@ -27,8 +31,9 @@ const TabNavigator = () => {
       screenOptions={{
         headerShown: false,
         tabBarShowLabel: false,
-        tabBarActiveTintColor: "#000",
+        tabBarActiveTintColor: "#fff",
         tabBarInactiveTintColor: "#808080",
+        tabBarStyle: { backgroundColor: "#000" },
       }}
     >
       <Tab.Screen
@@ -42,9 +47,28 @@ const TabNavigator = () => {
             <Pressable
               {...props}
               onPress={() => {
-                handleHomePress(); // Call reset function when "Home" is pressed
+                handleHomePress();
               }}
             />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Search"
+        component={SearchStackNavigator}
+        options={{
+          tabBarIcon: ({ color, size }) => (
+            <MaterialIcons name="search" size={size} color={color} />
+          ),
+          headerShown: false,
+        }}
+      />
+      <Tab.Screen
+        name="Menu"
+        component={MenuStackNavigator}
+        options={{
+          tabBarIcon: () => (
+            <Text style={{ color: "white", fontSize: 12 }}>MENU</Text>
           ),
         }}
       />
@@ -53,18 +77,13 @@ const TabNavigator = () => {
         component={CartStackNavigator}
         options={{
           tabBarIcon: ({ color, size }) => (
-            <MaterialIcons name="shopping-cart" size={size} color={color} />
+            <MaterialCommunityIcons
+              name="shopping-outline"
+              size={size}
+              color={color}
+            />
           ),
           headerShown: true,
-        }}
-      />
-      <Tab.Screen
-        name="order"
-        component={OrderStackNavigator}
-        options={{
-          tabBarIcon: ({ color, size }) => (
-            <MaterialIcons name="list-alt" size={size} color={color} />
-          ),
         }}
       />
       <Tab.Screen
@@ -72,7 +91,7 @@ const TabNavigator = () => {
         component={ProfileStackNavigator}
         options={{
           tabBarIcon: ({ color, size }) => (
-            <MaterialIcons name="account-circle" size={size} color={color} />
+            <MaterialCommunityIcons name="account" size={size} color={color} />
           ),
         }}
       />

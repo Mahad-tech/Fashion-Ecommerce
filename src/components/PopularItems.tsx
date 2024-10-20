@@ -14,7 +14,7 @@ const PopularItems = ({ image, name, onPress }) => {
         />
 
         {/* Product Details */}
-        <View style={tw`mt-2 ml-2`}>
+        <View style={tw`mt-2 ml-4`}>
           <Text style={tw`text-sm font-semibold text-black`}>{name}</Text>
           <Text></Text>
         </View>

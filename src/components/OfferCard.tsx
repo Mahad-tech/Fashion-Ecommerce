@@ -12,10 +12,9 @@ const OfferCard = ({ line1, line2, line3 }) => {
         <Text style={tw`text-2xl font-bold`}> {line1} </Text>
         <Text style={tw`font-bold text-2xl`}>{line2}</Text>
 
-        <Text style={tw`text-xs my-2`}></Text>
-
         <Pressable
-          style={tw`bg-black w-22 rounded-2xl h-10 justify-center items-center `}
+          onPress={() => console.log("Pressed")}
+          style={tw`bg-black w-22 rounded-2xl h-10 justify-center items-center mt-3`}
         >
           <Text style={tw`text-white text-xs font-semibold`}>{line3}</Text>
         </Pressable>

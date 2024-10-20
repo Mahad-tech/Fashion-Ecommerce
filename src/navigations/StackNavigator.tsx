@@ -5,6 +5,8 @@ import OrderScreen from "../screens/OrderScreen";
 import ProfileScreen from "../screens/ProfileScreen";
 import HomeScreen from "../screens/HomeScreen";
 import ProductListScreen from "../screens/ProductListScreen";
+import SearchScreen from "../screens/SearchScreen";
+import MenuScreen from "../screens/MenuScreen";
 
 const Stack = createStackNavigator();
 
@@ -34,6 +36,23 @@ export const CartStackNavigator = () => {
   return (
     <Stack.Navigator>
       <Stack.Screen name="cart-screen" component={CartScreen} />
+    </Stack.Navigator>
+  );
+};
+
+export const SearchStackNavigator = () => {
+  return (
+    <Stack.Navigator screenOptions={{ headerShown: false }}>
+      <Stack.Screen name="search-screen" component={SearchScreen} />
+    </Stack.Navigator>
+  );
+};
+
+export const MenuStackNavigator = () => {
+  return (
+    <Stack.Navigator screenOptions={{ headerShown: false }}>
+      <Stack.Screen name="menu-screen" component={MenuScreen} />
+      <Stack.Screen name="search-screen" component={SearchScreen} />
     </Stack.Navigator>
   );
 };
