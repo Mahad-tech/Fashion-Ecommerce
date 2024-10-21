@@ -18,6 +18,7 @@ import AuthenticationModal from "../components/AuthenticationModal";
 import { useNavigation } from "@react-navigation/native";
 import CategoryCard from "../components/CategoryCard";
 import MEN from "../../assets/MEN.png";
+
 const HomeScreen = () => {
   const navigation = useNavigation();
   const { products, setProducts } = useContext(ProductContext);

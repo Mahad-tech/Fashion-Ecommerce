@@ -129,6 +129,7 @@ const KidsCategoryScreen = () => {
         >
           {Popularproducts.map((product, index) => (
             <PopularItems
+              key={index}
               image={product.image}
               name={product.name}
               onPress={() =>

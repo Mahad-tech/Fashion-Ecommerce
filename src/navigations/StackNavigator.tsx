@@ -7,6 +7,7 @@ import HomeScreen from "../screens/HomeScreen";
 import ProductListScreen from "../screens/ProductListScreen";
 import SearchScreen from "../screens/SearchScreen";
 import MenuScreen from "../screens/MenuScreen";
+import RegistrationScreen from "../screens/RegistrationScreen";
 
 const Stack = createStackNavigator();
 
@@ -69,6 +70,7 @@ export const ProfileStackNavigator = () => {
   return (
     <Stack.Navigator>
       <Stack.Screen name="profile-screen" component={ProfileScreen} />
+      <Stack.Screen name="register-screen" component={RegistrationScreen} />
     </Stack.Navigator>
   );
 };
