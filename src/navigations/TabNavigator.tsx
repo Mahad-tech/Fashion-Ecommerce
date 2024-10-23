@@ -83,7 +83,7 @@ const TabNavigator = () => {
               color={color}
             />
           ),
-          headerShown: true,
+          headerShown: false,
         }}
       />
       <Tab.Screen

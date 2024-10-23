@@ -1,5 +1,6 @@
 import React from "react";
-import { View, Text, Image, Pressable } from "react-native";
+import { View, Text, Pressable } from "react-native";
+import { Image } from "expo-image";
 import tw from "twrnc";
 
 const ProductCard = ({ image, name, price, onPress }) => {
@@ -7,11 +8,7 @@ const ProductCard = ({ image, name, price, onPress }) => {
     <Pressable onPress={onPress} style={tw`mb-6`}>
       <View style={tw`w-[185px] h-[240px] bg-white rounded-xl  p-2`}>
         {/* Product Image */}
-        <Image
-          source={image}
-          style={tw`w-full h-[200px] rounded-lg`}
-          resizeMode="cover"
-        />
+        <Image source={image} style={tw`w-full h-[200px] rounded-lg`} />
 
         {/* Product Details */}
         <View style={tw`mt-2 ml-2`}>

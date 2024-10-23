@@ -8,11 +8,15 @@ import {
 } from "react-native";
 import tw from "twrnc";
 import { PanGestureHandler } from "react-native-gesture-handler";
+import CheckoutScreen from "../screens/CheckoutScreen";
+import { useNavigation } from "@react-navigation/native";
 
 const TotalSummaryCard = ({ total }) => {
   const [discountCode, setDiscountCode] = useState("");
   const [isCheckedOut, setIsCheckedOut] = useState(false); // State to track checkout status
   const swipeProgress = new Animated.Value(0); // Track swipe progress
+
+  const navigation = useNavigation();
 
   const applyDiscount = () => {
     // Discount logic
@@ -59,7 +63,7 @@ const TotalSummaryCard = ({ total }) => {
       >
         <TextInput
           style={tw`flex-1 text-gray-500`}
-          placeholder="Enter Discount Code"
+          placeholder="Enter Promo Code"
           value={discountCode}
           onChangeText={setDiscountCode}
         />
@@ -87,9 +91,13 @@ const TotalSummaryCard = ({ total }) => {
         onHandlerStateChange={handleGestureEnd}
       >
         <Animated.View style={[tw`p-4 rounded-lg`, { backgroundColor }]}>
-          <Text style={tw`text-white text-center font-bold`}>
-            Swipe to Checkout
-          </Text>
+          <TouchableOpacity
+            onPress={() => navigation.navigate("checkout-screen")}
+          >
+            <Text style={tw`text-white text-center font-bold`}>
+              Swipe to Checkout
+            </Text>
+          </TouchableOpacity>
         </Animated.View>
       </PanGestureHandler>
     </View>

@@ -4,7 +4,6 @@ import {
   ScrollView,
   Text,
   TouchableOpacity,
-  SafeAreaView,
   Image,
   KeyboardAvoidingView,
   Platform,
@@ -12,6 +11,7 @@ import {
 import tw from "twrnc";
 import CartItem from "../components/CartItem";
 import TotalSummaryCard from "../components/TotalSummaryCard";
+import bag from "../../assets/bag.png";
 
 const CartScreen = ({ navigation }) => {
   const [total, setTotal] = useState(0);
@@ -49,11 +49,11 @@ const CartScreen = ({ navigation }) => {
 
   return (
     <KeyboardAvoidingView
-      style={tw`flex-1 bg-white`} // Add this line
-      behavior={Platform.OS === "ios" ? "padding" : "height"} // Adjust based on the platform
-      keyboardVerticalOffset={100} // Adjust offset as needed
+      style={tw`flex-1 bg-white`}
+      behavior={Platform.OS === "ios" ? "padding" : "height"}
+      keyboardVerticalOffset={100}
     >
-      <View style={tw`flex-1 justify-between`}>
+      <View style={tw`flex-1 mt-10`}>
         <ScrollView
           showsVerticalScrollIndicator={false}
           contentContainerStyle={tw`p-4`}
@@ -73,16 +73,14 @@ const CartScreen = ({ navigation }) => {
               ))}
             </>
           ) : (
-            <View style={tw`justify-center items-center mb-10`}>
-              <Image source={bag} style={{ height: 130, width: 130 }} />
-              <Text
-                style={tw`text-lg font-500 mt-1 justify-center items-center ml-4`}
-              >
+            <View style={tw`flex-1 justify-center items-center`}>
+              <Image source={bag} style={{ height: 130, width: 135 }} />
+              <Text style={tw`text-lg font-500 mt-1 text-center`}>
                 Your cart is empty
               </Text>
               <TouchableOpacity
                 onPress={() => navigation.navigate("home-screen")}
-                style={tw`bg-black p-4 rounded-lg border border-black mt-5 ml-4`}
+                style={tw`bg-black p-4 rounded-lg border border-black mt-5`}
               >
                 <Text style={tw`text-white text-center`}>
                   Explore Categories
@@ -92,10 +90,12 @@ const CartScreen = ({ navigation }) => {
           )}
         </ScrollView>
 
-        {/* TotalSummaryCard at the bottom */}
-        <View style={tw`p-4`}>
-          <TotalSummaryCard total={total} />
-        </View>
+        {/* Conditionally render TotalSummaryCard only if there are items */}
+        {cartItems.length > 0 && (
+          <View style={tw`p-4`}>
+            <TotalSummaryCard total={total} />
+          </View>
+        )}
       </View>
     </KeyboardAvoidingView>
   );

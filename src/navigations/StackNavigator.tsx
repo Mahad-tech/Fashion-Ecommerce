@@ -8,6 +8,7 @@ import ProductListScreen from "../screens/ProductListScreen";
 import SearchScreen from "../screens/SearchScreen";
 import MenuScreen from "../screens/MenuScreen";
 import RegistrationScreen from "../screens/RegistrationScreen";
+import CheckoutScreen from "../screens/CheckoutScreen";
 
 const Stack = createStackNavigator();
 
@@ -37,6 +38,7 @@ export const CartStackNavigator = () => {
   return (
     <Stack.Navigator>
       <Stack.Screen name="cart-screen" component={CartScreen} />
+      <Stack.Screen name="checkout-screen" component={CheckoutScreen} />
     </Stack.Navigator>
   );
 };

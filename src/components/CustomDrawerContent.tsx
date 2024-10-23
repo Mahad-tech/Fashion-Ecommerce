@@ -52,22 +52,22 @@ const CustomDrawerContent = ({ navigation }) => {
 
   const kidsSubcategories = {
     Western: [
-      { name: "Dress Shirts", screen: "Kids" },
-      { name: "Casual Shirts", screen: "Kids" },
-      { name: "Polo Shirts", screen: "Kids" },
-      { name: "T-Shirts", screen: "Kids" },
-      { name: "Trouser", screen: "Kids" },
-      { name: "Dress Pants", screen: "Kids" },
-      { name: "Jeans", screen: "Kids" },
-      { name: "Cargo", screen: "Kids" },
-      { name: "Formal Suits", screen: "Kids" },
-      { name: "Blazers", screen: "Kids" },
+      { name: "Dress Shirts", screen: "Juniors" },
+      { name: "Casual Shirts", screen: "Juniors" },
+      { name: "Polo Shirts", screen: "Juniors" },
+      { name: "T-Shirts", screen: "Juniors" },
+      { name: "Trouser", screen: "Juniors" },
+      { name: "Dress Pants", screen: "Juniors" },
+      { name: "Jeans", screen: "Juniors" },
+      { name: "Cargo", screen: "Juniors" },
+      { name: "Formal Suits", screen: "Juniors" },
+      { name: "Blazers", screen: "Juniors" },
     ],
     Eastern: [
-      { name: "Shalwar Kameez", screen: "Kids" },
-      { name: "Waistcoat", screen: "Kids" },
-      { name: "Kurta", screen: "Kids" },
-      { name: "Sherwani", screen: "Kids" },
+      { name: "Shalwar Kameez", screen: "Juniors" },
+      { name: "Waistcoat", screen: "Juniors" },
+      { name: "Kurta", screen: "Juniors" },
+      { name: "Sherwani", screen: "Juniors" },
     ],
   };
 

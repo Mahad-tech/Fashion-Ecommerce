@@ -11,11 +11,12 @@ const FloatingLabelInput = ({
   label,
   value,
   onChangeText,
-  isError = false, // Provide default values for props
+  isError = false,
   secureTextEntry = false,
   inputStyle = {},
   containerStyle = {},
   labelStyle = {},
+  type = "default",
 }) => {
   const [isFocused, setIsFocused] = useState(false);
   const labelTranslateY = useSharedValue(0);
@@ -42,6 +43,19 @@ const FloatingLabelInput = ({
     }
   };
 
+  const getKeyboardType = () => {
+    switch (type) {
+      case "number":
+        return "numeric";
+      case "email":
+        return "email";
+      case "phone":
+        return "phone";
+      default:
+        return "default";
+    }
+  };
+
   return (
     <View style={[tw`mb-5 relative`, containerStyle]}>
       <Animated.Text
@@ -64,6 +78,7 @@ const FloatingLabelInput = ({
         onBlur={handleBlur}
         placeholderTextColor="transparent"
         secureTextEntry={secureTextEntry}
+        keyboardType={getKeyboardType}
       />
     </View>
   );

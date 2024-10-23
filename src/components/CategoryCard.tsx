@@ -1,4 +1,5 @@
-import { Pressable, View, Image } from "react-native";
+import { Pressable, View } from "react-native";
+import { Image } from "expo-image";
 import React from "react";
 import tw from "twrnc";
 import { Dimensions } from "react-native";
@@ -14,7 +15,6 @@ const CategoryCard = ({ onPress, imageSource }) => {
           <Image
             source={imageSource}
             style={{ width: width * 0.92, height: width * 1.0 * 0.52 }}
-            resizeMode="cover"
           />
         </View>
       </View>
